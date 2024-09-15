@@ -12,7 +12,7 @@ const app = express()
 
 
 const frontendURL = process.env.FRONTEND_URL
-const port = process.env.PORT
+const PORT = process.env.PORT
 
 let corsOptions = {
     origin: `${frontendURL}`
@@ -65,7 +65,7 @@ app.post("/api/item-update-checkbox", async(req,res) =>{
 })
 
 
-app.listen(port, () =>{
+app.listen(PORT, () =>{
     console.log(`Example app listening on port ${port}`)
 })
 
