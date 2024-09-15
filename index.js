@@ -1,14 +1,21 @@
 import express from "express"
 import cors from "cors"
-
 import bodyParser from "body-parser";
 import Todo from "./database.js";
+import dotenv from 'dotenv';
+
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();  // Load .env in development
+}
 
 const app = express()
-const port = 3000
+
+
+const frontendURL = process.env.FRONTEND_URL
+const port = process.env.PORT
 
 let corsOptions = {
-    origin: 'http://localhost:5173'
+    origin: `${frontendURL}`
 }
 
 app.use(cors(corsOptions))

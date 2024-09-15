@@ -1,6 +1,13 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv"
 
-mongoose.connect('mongodb://127.0.0.1:27017/todo')
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();  // Load .env in development
+}
+
+const databaseURL = process.env.DATABASE_URL
+
+mongoose.connect(`${databaseURL}`)
   .then(() => {
     console.log("Database connected");
   })
